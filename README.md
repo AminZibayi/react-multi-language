@@ -14,6 +14,8 @@ Helps you create multi-language pages.
 
 Clone repo, copy files and folders in it and paste them in `node_modules` folder of your project:
 
+    git clone https://github.com/AminZibayi/React-MultiLang.git
+    #Or
     git clone git@github.com:AminZibayi/React-MultiLang.git
 
 ~~with npm:~~
