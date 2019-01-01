@@ -2,7 +2,7 @@
 
 # React-MultiLang
 
-Helps you create multilanguage pages.
+Helps you create multi-language pages.
 
 - No server needed.
 - Async support.
