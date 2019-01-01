@@ -14,11 +14,11 @@ Helps you create multilanguage pages.
 
 **with npm**:
 
-`npm install react-multilang --save`
+    npm install react-multilang --save
 
 **with yarn**:
 
-`yarn add react-multilang`
+    yarn add react-multilang
 
 ## API Reference
 
@@ -120,13 +120,13 @@ class App extends Component {
       <div onClick={this.changeLang}>
         <Determinator till={<span>Loading...</span>}>
           {async (lang, add) => {
-            setTimeout(() => {
-              if (lang == 'fr') 
-                add("Bonjour le monde")
-              if (lang == 'en') 
-                add("Hello World");
-              }
-            , 1000);
+            fetch(`http://example.com/${lang}.json`)
+              .then(response => {
+                return response.json();
+              })
+              .then(json => {
+                add(JSON.stringify(json).content);
+              });
           }}
         </Determinator>
         {/*MultiLang component must be after all the Determinators*/}
