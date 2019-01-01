@@ -1,6 +1,6 @@
 {
   "name": "react-multilang",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Helps you create multilanguage pages",
   "main": "index.js",
   "dependencies": {
