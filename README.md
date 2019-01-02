@@ -15,9 +15,6 @@ Helps you create multi-language pages.
 **Via npm:**
 
     npm install react-multi-language --save
-    git clone https://github.com/AminZibayi/React-MultiLang.git
-    #Or
-    git clone git@github.com:AminZibayi/React-MultiLang.git
 
 **Via yarn:**
 
@@ -149,3 +146,4 @@ export default App;
 ## License
 
 MIT License
+>>>>>>> Stashed changes
