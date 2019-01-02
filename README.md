@@ -1,6 +1,6 @@
 ### In the Name of Allah
 
-# React-MultiLang
+# react-multi-language
 
 Helps you create multi-language pages.
 
@@ -14,15 +14,15 @@ Helps you create multi-language pages.
 
 Clone repo, copy files and folders in it and paste them in `node_modules` folder of your project:
 
-    git clone git@github.com:AminZibayi/React-MultiLang.git
+    git clone git@github.com:AminZibayi/react-multi-language.git
 
-~~with npm:~~
+**via npm:**
 
-    npm install react-multilang --save
+    npm install react-multi-language --save
 
-~~with yarn:~~
+**via yarn:**
 
-    yarn add react-multilang
+    yarn add react-multi-language
 
 ## API Reference
 

@@ -1,8 +1,9 @@
 {
-  "name": "react-multilang",
+  "name": "react-multi-language",
   "version": "0.1.2",
-  "description": "Helps you create multilanguage pages",
+  "description": "Helps you create multi-language pages",
   "main": "index.js",
+  "homepage": "https://github.com/AminZibayi/React-MultiLang",
   "dependencies": {
     "react": "^16.5.1"
   },
@@ -13,6 +14,9 @@
     "localisation",
     "localization"
   ],
+  "bugs": {
+    "url": "https://github.com/AminZibayi/React-MultiLang/issues"
+  },
   "scripts": {},
   "author": "Amin Zibayi",
   "license": "MIT"
