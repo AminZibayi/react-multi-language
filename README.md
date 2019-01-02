@@ -6,23 +6,23 @@ Helps you create multi-language pages.
 
 - No server needed.
 - Async support.
-- No dependencies.
+- No additional dependencies.
 - Universal.
 - Micro library.
 
 ## Installation
 
-Clone repo, copy files and folders in it and paste them in `node_modules` folder of your project:
-
-    git clone git@github.com:AminZibayi/react-multi-language.git
-
-**via npm:**
+**Via npm:**
 
     npm install react-multi-language --save
 
-**via yarn:**
+**Via yarn:**
 
     yarn add react-multi-language
+
+**Via bower:**
+
+    bower install react-multi-language --save
 
 ## API Reference
 
