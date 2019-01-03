@@ -20,10 +20,6 @@ Helps you create multi-language pages.
 
     yarn add react-multi-language
 
-**Via bower:**
-
-    bower install react-multi-language --save
-
 ## API Reference
 
 ### Determinator
@@ -146,4 +142,3 @@ export default App;
 ## License
 
 MIT License
->>>>>>> Stashed changes
