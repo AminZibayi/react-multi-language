@@ -26,11 +26,9 @@ const withLang = determinator => Component => class extends React.Component {
   componentWillMount() {
     document.addEventListener("language", e => {
       this.handleLanguage(e.detail);
-    });
-    if (typeof determinator === "function") 
-      document.addEventListener("language", e => {
+      if (typeof determinator === "function") 
         determinator(e.detail, this.addData(e.detail));
-      })
+    });
   }
 
   render() {

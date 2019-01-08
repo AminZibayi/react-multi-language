@@ -27,11 +27,9 @@ class Determinator extends React.Component {
   componentWillMount() {
     document.addEventListener("language", e => {
       this.handleLanguage(e.detail);
-    });
-    if (typeof this.props.children === "function") 
-      document.addEventListener("language", e => {
+      if (typeof this.props.children === "function") 
         this.props.children(e.detail, this.addData(e.detail));
-      })
+    });
   }
 
   render() {
