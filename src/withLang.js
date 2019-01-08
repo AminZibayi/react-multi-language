@@ -36,7 +36,7 @@ const withLang = determinator => Component => class extends React.Component {
   render() {
     if (typeof determinator !== "object" && typeof determinator !== "function") 
       throw new TypeError('MultiLang: Excepted an object or a function or a string but recieved ' + typeof determinator);
-    return <Component lang={this.state.lang} langProps={this.state.data[this.state.lang] || {}}/>;
+    return <Component lang={this.state.lang} langProps={this.state.data[this.state.lang] || {}} {...this.props}/>;
   };
 };
 
