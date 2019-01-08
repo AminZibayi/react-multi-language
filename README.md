@@ -31,7 +31,7 @@ returns a string or component.
 - `children`: `union(function, string, object)`: 
   - `function`: can be an async function, the function will receive two arguments:
     - First is the current language, the function will be called anytime language changes(by `MultiLang`).
-    - Second is a function which updates the currently displayed content by `Determinator` to the content that it receives according to the new language
+    - Second is a function which updates the currently displayed content by `Determinator` to the content that it receives according to the new language.
   - `string`: it will return the string with no mutation.
   - `object`: it must follow below pattern and returns the value of the matched key (based on `props.lang` of `MultiLang`).
 ```javascript
@@ -52,6 +52,40 @@ must be after all the Determinators.
 
 **Props:** 
 `lang`: `string`: the current language will be applied to the Determinators.
+
+### withLang
+
+A higher-order component, it is very similar to Determinator
+
+    withLang(determinator)(Component)
+
+- `determinator`: `union(function, object)`:
+  - `function`: can be an async function, the function will receive two arguments:
+    - First is the current language, the function will be called anytime language changes(by `MultiLang`).
+    - Second is a function which updates the currently displayed content by `Determinator` to the content that it receives according to the new language.
+  - `object`: it must follow below pattern and returns the value of the matched key (based on `props.lang` of `MultiLang`).
+```javascript
+  {
+    [language]: [content]
+  }
+  // e.g.
+  {
+    fr: {
+      Hello: "Bonjour",
+      World: "monde", 
+      imageURL: "https://example.com/200x200DB570BC6-F1CA-101F-C227-37B227673AD6.jpg?lang=fr"
+    },
+    en: {
+      Hello: "Hello",
+      World: "world",
+      imageURL: "https://example.com/200x200DB570BC6-F1CA-101F-C227-37B227673AD6.jpg?lang=en"
+    }
+  }
+```
+The wrapped component receives two props:
+
+- `lang`: the current language.
+- `langProps`: the content of the current language.
 
 ## Examples
 
@@ -100,7 +134,7 @@ class App extends Component {
 
 export default App;
 ```
-Fetching data when needed is one of the most common case for async functions:
+Fetching data when needed is one of the most common use cases for async functions:
 
 ```javascript
 import React, { Component } from "react";
@@ -130,6 +164,56 @@ class App extends Component {
           }}
         </Determinator>
         {/*MultiLang component must be after all the Determinators*/}
+        <MultiLang lang={this.state.lang}/>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+Using `withLang`:
+
+```javascript
+import React, {Component} from "react";
+import {MultiLang, withLang} from "react-multilang";
+
+const MyComponent = withLang({
+  fr: {
+    HW: "Bonjour le monde",
+    imageURL: "http://example.com/200x200DB570BC6-F1CA-101F-C227-37B227673AD6.jpg?lang=fr"
+  },
+  en: {
+    HW: "Hello World",
+    imageURL: "http://example.com/200x200DB570BC6-F1CA-101F-C227-37B227673AD6.jpg?lang=en"
+  }
+})(props => (
+  <div>
+    <p>{props.lang}</p>
+    <p>{props.langProps.HW}</p>
+    <img src={props.langProps.imageURL}/>
+    <img src={"http://example.com/200x200DB570BC6-F1CA-101F-C227-37B227673AD6.jpg?lang=" + props.lang}/>
+  </div>
+));
+
+class App extends Component {
+  state = {
+    lang: "en"
+  };
+
+  changeLang = () => {
+    this.setState(state => ({
+      lang: state.lang === "en"
+        ? "fr"
+        : "en"
+    }));
+  };
+
+  render() {
+    return (
+      <div onClick={this.changeLang}>
+        <MyComponent/>
         <MultiLang lang={this.state.lang}/>
       </div>
     );
