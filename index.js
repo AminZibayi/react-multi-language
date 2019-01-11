@@ -2,8 +2,10 @@
 
 import Determinator from "./src/Determinator";
 import MultiLang from "./src/MultiLang";
+import withLang from "./src/withLang";
 
 export {
   Determinator,
-  MultiLang
+  MultiLang,
+  withLang
 };
