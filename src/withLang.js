@@ -3,23 +3,29 @@
 import React from "react";
 
 const withLang = determinator => Component => class extends React.Component {
-  state = {
-    lang: document.body.lang,
-    data: typeof determinator === "object"
-      ? determinator
-      : {}
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      lang: document.body.lang,
+      data: typeof determinator === "object"
+        ? determinator
+        : {}
+    };
+    this.handleLanguage.bind(this);
+    this.addData.bind(this);
+  }
 
-  addData = lang => content => {
+  addData(lang) {
+    return content => {
     this.setState(state => ({
       data: {
         ...state.data,
         [lang]: content
       }
     }));
-  }
+  }}
 
-  handleLanguage = lang => {
+  handleLanguage(lang) {
     this.setState({lang});
   }
 

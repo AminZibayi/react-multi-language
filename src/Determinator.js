@@ -3,24 +3,30 @@
 import React from "react";
 
 class Determinator extends React.Component {
-
-  state = {
-    lang: null,
-    data: typeof this.props.children === "object"
-      ? this.props.children
-      : {}
-  };
-
-  addData = lang => content => {
-    this.setState(state => ({
-      data: {
-        ...state.data,
-        [lang]: content
-      }
-    }));
+  constructor(props) {
+    super(props);
+    this.state = {
+      lang: null,
+      data: typeof this.props.children === "object"
+        ? this.props.children
+        : {}
+    };
+    this.handleLanguage.bind(this);
+    this.addData.bind(this);
   }
 
-  handleLanguage = lang => {
+  addData(lang) {
+    return content => {
+      this.setState(state => ({
+        data: {
+          ...state.data,
+          [lang]: content
+        }
+      }));
+    }
+  }
+
+  handleLanguage(lang) {
     this.setState({lang});
   }
 
@@ -29,7 +35,8 @@ class Determinator extends React.Component {
       this.handleLanguage(e.detail);
       if (typeof this.props.children === "function") 
         this.props.children(e.detail, this.addData(e.detail));
-    });
+      }
+    );
   }
 
   render() {
