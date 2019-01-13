@@ -1,5 +1,7 @@
 # In the Name of Allah
 
 /_
-
+/node_modules
+/.cache
+/dist
 yarn-error.log
