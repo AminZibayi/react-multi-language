@@ -6,7 +6,7 @@ class Determinator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lang: null,
+      lang: document.body.lang,
       data: typeof this.props.children === "object"
         ? this.props.children
         : {}
@@ -47,7 +47,7 @@ class Determinator extends React.Component {
     else if (typeof children !== "object" && typeof children !== "function") 
       throw new TypeError('MultiLang: Excepted an object or a function or a string but recieved ' + typeof children);
     
-    return this.state.data[this.state.lang] || this.props.till;
+    return this.state.data[this.state.lang] || this.props.till || null;
   };
 };
 
