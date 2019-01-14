@@ -2,6 +2,5 @@
 
 /_
 /node_modules
-/.cache
-/dist
+index.js
 yarn-error.log
