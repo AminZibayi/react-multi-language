@@ -6,7 +6,7 @@ Helps you create multi-language pages.
 
 - No server needed.
 - Async support.
-- No additional dependencies.
+- No dependencies.
 - Universal.
 - Micro library.
 
@@ -57,12 +57,12 @@ must be after all the Determinators.
 
 A higher-order component, it is very similar to Determinator
 
-    withLang(determinator)(Component)
+    withLang(children)(Component)
 
-- `determinator`: `union(function, object)`:
+- `children`: `union(function, object)`:
   - `function`: can be an async function, the function will receive two arguments:
     - First is the current language, the function will be called anytime language changes(by `MultiLang`).
-    - Second is a function which updates the currently displayed content by `Determinator` to the content that it receives according to the new language.
+    - Second is a function which updates the currently displayed content to the content that it receives according to the new language.
   - `object`: it must follow below pattern and returns the value of the matched key (based on `props.lang` of `MultiLang`).
 ```javascript
   {
@@ -82,10 +82,15 @@ A higher-order component, it is very similar to Determinator
     }
   }
 ```
-The wrapped component receives two props:
+The wrapped component receives three props:
 
 - `lang`: the current language.
 - `langProps`: the content of the current language.
+- `determinator`: is similar to `Determinator` but it is not component and does not support functions.
+```javascript
+determinator({children, till});
+```
+using `props.determinator` rather than `Determinator` is recommended.
 
 ## Examples
 
