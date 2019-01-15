@@ -2,17 +2,25 @@
 
 import React from "react";
 
-const withLang = determinator => Component => class extends React.Component {
+const withLang = children => Component => class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       lang: document.body.lang,
-      data: typeof determinator === "object"
-        ? determinator
+      data: typeof children === "object"
+        ? children
         : {}
     };
     this.handleLanguage.bind(this);
     this.addData.bind(this);
+    this.determinator = ({children, till}) => {
+      if (typeof children === "string") 
+        return children;
+      else if (typeof children !== "object") 
+        throw new TypeError('MultiLang: Excepted an object or a string but recieved ' + typeof children);
+      
+      return children[this.state.lang] || till || null;
+    };
   }
 
   addData(lang) {
@@ -32,15 +40,15 @@ const withLang = determinator => Component => class extends React.Component {
   componentWillMount() {
     document.addEventListener("language", e => {
       this.handleLanguage(e.detail);
-      if (typeof determinator === "function") 
-        determinator(e.detail, this.addData(e.detail));
+      if (typeof children === "function") 
+        children(e.detail, this.addData(e.detail));
     });
   }
 
   render() {
-    if (typeof determinator !== "object" && typeof determinator !== "function") 
-      throw new TypeError('MultiLang: Excepted an object or a function or a string but recieved ' + typeof determinator);
-    return <Component lang={this.state.lang} langProps={this.state.data[this.state.lang] || {}} {...this.props}/>;
+    if (typeof children !== "object" && typeof children !== "function") 
+      throw new TypeError('MultiLang: Excepted an object or a function or a string but recieved ' + typeof children);
+    return <Component lang={this.state.lang} langProps={this.state.data[this.state.lang] || {}} determinator={this.determinator} {...this.props}/>;
   };
 };
 
