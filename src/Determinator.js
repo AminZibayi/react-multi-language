@@ -45,7 +45,7 @@ class Determinator extends React.Component {
     if (typeof children === "string") 
       return children;
     else if (typeof children !== "object" && typeof children !== "function") 
-      throw new TypeError('MultiLang: Excepted an object or a function or a string but recieved ' + typeof children);
+      throw new TypeError('MultiLang: Expected an object or a function or a string but recieved ' + typeof children);
     
     return this.state.data[this.state.lang] || this.props.till || null;
   };

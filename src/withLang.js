@@ -17,7 +17,7 @@ const withLang = children => Component => class extends React.Component {
       if (typeof children === "string") 
         return children;
       else if (typeof children !== "object") 
-        throw new TypeError('MultiLang: Excepted an object or a string but recieved ' + typeof children);
+        throw new TypeError('MultiLang: Expected an object or a string but recieved ' + typeof children);
       
       return children[this.state.lang] || till || null;
     };
@@ -47,7 +47,7 @@ const withLang = children => Component => class extends React.Component {
 
   render() {
     if (typeof children !== "object" && typeof children !== "function") 
-      throw new TypeError('MultiLang: Excepted an object or a function or a string but recieved ' + typeof children);
+      throw new TypeError('MultiLang: Expected an object or a function but recieved ' + typeof children);
     return <Component lang={this.state.lang} langProps={this.state.data[this.state.lang] || {}} determinator={this.determinator} {...this.props}/>;
   };
 };
