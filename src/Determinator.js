@@ -13,6 +13,11 @@ class Determinator extends React.Component {
     };
     this.handleLanguage.bind(this);
     this.addData.bind(this);
+    this.listener = e => {
+      this.handleLanguage(e.detail);
+      if (typeof this.props.children === "function") 
+        this.props.children(e.detail, this.addData(e.detail));
+      }
   }
 
   addData(lang) {
@@ -31,12 +36,11 @@ class Determinator extends React.Component {
   }
 
   componentWillMount() {
-    document.addEventListener("language", e => {
-      this.handleLanguage(e.detail);
-      if (typeof this.props.children === "function") 
-        this.props.children(e.detail, this.addData(e.detail));
-      }
-    );
+    document.addEventListener("language", this.listener);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("language", this.listener);
   }
 
   render() {

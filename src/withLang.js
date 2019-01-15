@@ -13,6 +13,11 @@ const withLang = children => Component => class extends React.Component {
     };
     this.handleLanguage.bind(this);
     this.addData.bind(this);
+    this.listener = e => {
+      this.handleLanguage(e.detail);
+      if (typeof children === "function") 
+        children(e.detail, this.addData(e.detail));
+    };
     this.determinator = ({children, till}) => {
       if (typeof children === "string") 
         return children;
@@ -38,11 +43,11 @@ const withLang = children => Component => class extends React.Component {
   }
 
   componentWillMount() {
-    document.addEventListener("language", e => {
-      this.handleLanguage(e.detail);
-      if (typeof children === "function") 
-        children(e.detail, this.addData(e.detail));
-    });
+    document.addEventListener("language", this.listener);
+  }
+
+  componentWillMount() {
+    document.removeEventListener("language", this.listener);
   }
 
   render() {
