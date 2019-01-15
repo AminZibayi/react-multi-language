@@ -46,7 +46,7 @@ const withLang = children => Component => class extends React.Component {
     document.addEventListener("language", this.listener);
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
     document.removeEventListener("language", this.listener);
   }
 
