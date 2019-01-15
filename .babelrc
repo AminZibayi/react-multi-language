@@ -2,6 +2,13 @@
   "presets": [
     ["env", {
       "modules": false
-    }], "react"
+    }],
+    "react",
+    "minify"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-classes",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread"
   ]
 }

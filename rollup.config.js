@@ -1,7 +1,6 @@
 /* In the Name of Allah */
 
 import babel from 'rollup-plugin-babel';
-import minify from 'rollup-plugin-babel-minify';
 
 export default {
   input : 'src/index.js',
@@ -11,7 +10,6 @@ export default {
   },
   external: ["react"],
   plugins : [
-    babel({exclude: 'node_modules/**'}),
-    minify()
+    babel({exclude: 'node_modules/**'})
   ]
 };
