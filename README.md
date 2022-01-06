@@ -1,5 +1,3 @@
-### In the Name of Allah
-
 # react-multi-language
 
 Helps you create multi-language pages.
@@ -96,7 +94,7 @@ using `props.determinator` rather than `Determinator` is recommended.
 
 ```javascript
 import React, { Component } from "react";
-import { MultiLang, Determinator } from "react-multilang";
+import { MultiLang, Determinator } from "react-multi-language";
 
 class App extends Component {
   state = {
@@ -143,7 +141,7 @@ Fetching data when needed is one of the most common use cases for async function
 
 ```javascript
 import React, { Component } from "react";
-import { MultiLang, Determinator } from "react-multilang";
+import { MultiLang, Determinator } from "react-multi-language";
 
 class App extends Component {
   state = {
@@ -182,7 +180,7 @@ Using `withLang`:
 
 ```javascript
 import React, {Component} from "react";
-import {MultiLang, withLang} from "react-multilang";
+import {MultiLang, withLang} from "react-multi-language";
 
 const MyComponent = withLang({
   fr: {
